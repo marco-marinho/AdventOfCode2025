@@ -1,10 +1,24 @@
 ﻿module Program
 
 open AOC.Days
+open Benchmarks
+open BenchmarkDotNet.Running
 
 [<EntryPoint>]
 let main args =
     match args with
+    | [| "benchmark"; dayStr |] ->
+        let day = int dayStr
+
+        match day with
+        | 1 ->
+            let summary = BenchmarkRunner.Run<Day01Benchmarks>()
+            ()
+        | 2 ->
+            let summary = BenchmarkRunner.Run<Day02Benchmarks>()
+            ()
+        | _ -> printfn "Day %d not implemented yet" day
+
     | [| dayStr; partStr |] ->
         let day = int dayStr
         let part = int partStr
@@ -17,6 +31,7 @@ let main args =
             let result = Day02.solve part
             printfn "Day %d, Part %d: %A" day part result
         | _ -> printfn "Day %d not implemented yet" day
+
 
     | _ ->
         printfn "Usage: dotnet run -- <day> [part]"

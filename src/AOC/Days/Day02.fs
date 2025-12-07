@@ -31,8 +31,12 @@ module Day02 =
     let is_valid_multiple id =
         let n_digits = num_digits id
 
-        seq { n_digits .. -1 .. 2 }
-        |> Seq.exists (fun r -> n_digits % r = 0 && is_valid r id)
+        let rec check_divisors r =
+            if r < 2 then false // Stop condition
+            else if n_digits % r = 0 && is_valid r id then true
+            else check_divisors (r - 1)
+
+        check_divisors n_digits
 
 
     let parseLine (lines: list<string>) =

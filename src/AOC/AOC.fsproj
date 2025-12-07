@@ -9,7 +9,12 @@
     <Compile Include="Utils.fs" />
     <Compile Include="Days/Day01.fs" />
     <Compile Include="Days/Day02.fs" />
+    <Compile Include="Benchmark.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
   </ItemGroup>
 
 </Project>
