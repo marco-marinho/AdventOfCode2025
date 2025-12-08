@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B491CA04-720
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AOC", "src\AOC\AOC.fsproj", "{4753D923-A0CA-420C-8543-233EF99B6A6E}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AOC.Tests", "src\AOC.Tests\AOC.Tests.fsproj", "{4390F4B7-BA17-4F25-B0F1-746E1B11A4D6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
