@@ -30,3 +30,12 @@ type Day03Benchmarks() =
 
     [<Benchmark>]
     member this.Part2() = Day03.solve 2
+
+[<MemoryDiagnoser>]
+type Day04Benchmarks() =
+
+    [<Benchmark>]
+    member this.Part1() = Day04.solve 1
+
+    [<Benchmark>]
+    member this.Part2() = Day04.solve 2
