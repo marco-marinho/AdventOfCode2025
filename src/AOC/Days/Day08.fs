@@ -4,8 +4,6 @@ module Day08 =
     open AOC.Utils
     open CSharpLib
 
-    let helpers = Helpers()
-
     let parse (input: list<string>) : list<struct (uint64 * uint64 * uint64)> =
         input
         |> List.map (fun line ->
@@ -20,7 +18,7 @@ module Day08 =
             points
             |> List.mapi (fun j p2 -> j, p2)
             |> List.filter (fun (j, _) -> j > i)
-            |> List.map (fun (j, p2) -> (i, j), helpers.Distance3D(p1, p2)))
+            |> List.map (fun (j, p2) -> (i, j), Helpers.Distance3D(p1, p2)))
 
     let make_circuits distances max_connections =
         let (a, b), _ = List.head distances

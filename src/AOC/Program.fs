@@ -66,6 +66,9 @@ let main args =
         | 8 ->
             let result = Day08.solve part
             printfn "Day %d, Part %d: %A" day part result
+        | 9 ->
+            let result = Day09.solve part
+            printfn "Day %d, Part %d: %A" day part result
         | _ -> printfn "Day %d not implemented yet" day
 
 
