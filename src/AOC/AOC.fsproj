@@ -12,12 +12,19 @@
     <Compile Include="Days/Day03.fs" />
     <Compile Include="Days/Day04.fs" />
     <Compile Include="Days/Day05.fs" />
+    <Compile Include="Days/Day06.fs" />
+    <Compile Include="Days/Day07.fs" />
+    <Compile Include="Days/Day08.fs" />
     <Compile Include="Benchmark.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpLib\CSharpLib.csproj" />
   </ItemGroup>
 
 </Project>

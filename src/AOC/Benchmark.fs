@@ -39,3 +39,39 @@ type Day04Benchmarks() =
 
     [<Benchmark>]
     member this.Part2() = Day04.solve 2
+
+[<MemoryDiagnoser>]
+type Day05Benchmarks() =
+
+    [<Benchmark>]
+    member this.Part1() = Day05.solve 1
+
+    [<Benchmark>]
+    member this.Part2() = Day05.solve 2
+
+[<MemoryDiagnoser>]
+type Day06Benchmarks() =
+
+    [<Benchmark>]
+    member this.Part1() = Day06.solve 1
+
+    [<Benchmark>]
+    member this.Part2() = Day06.solve 2
+
+[<MemoryDiagnoser>]
+type Day07Benchmarks() =
+
+    [<Benchmark>]
+    member this.Part1() = Day07.solve 1
+
+    [<Benchmark>]
+    member this.Part2() = Day07.solve 2
+
+[<MemoryDiagnoser>]
+type Day08Benchmarks() =
+
+    [<Benchmark>]
+    member this.Part1() = Day08.solve 1
+
+    [<Benchmark>]
+    member this.Part2() = Day08.solve 2
