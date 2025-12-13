@@ -16,6 +16,7 @@
     <Compile Include="Days/Day07.fs" />
     <Compile Include="Days/Day08.fs" />
     <Compile Include="Days/Day09.fs" />
+    <Compile Include="Days/Day10.fs" />
     <Compile Include="Benchmark.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
@@ -27,5 +28,14 @@
   <ItemGroup>
     <ProjectReference Include="..\CSharpLib\CSharpLib.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\NativeLib\build\libfort_lib.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\NativeLib\build\libhighs_cpp.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup> 
 
 </Project>
