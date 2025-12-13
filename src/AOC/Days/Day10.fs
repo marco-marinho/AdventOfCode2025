@@ -85,9 +85,9 @@ module Day10 =
 
     let part2 (input: list<string>) : string =
         let lights = input |> List.map parse_line
-        let tableous = lights |> List.map (fun l -> make_matrices l.Buttons l.Joltages)
+        let tableaus = lights |> List.map (fun l -> make_matrices l.Buttons l.Joltages)
 
-        tableous
+        tableaus
         |> List.map (fun (A, b, c) -> Helpers.MIPSolve(c, A, b))
         |> List.sum
         |> string
