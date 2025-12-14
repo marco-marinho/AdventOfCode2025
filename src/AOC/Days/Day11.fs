@@ -2,43 +2,36 @@ namespace AOC.Days
 
 module Day11 =
     open AOC.Utils
-    open CSharpLib
     open System.Collections.Generic
 
     let parse (input: list<string>) =
-        let omap = Dictionary<string, HashSet<string>>()
+        let omap = Dictionary<string, string[]>()
 
         input
         |> List.iter (fun line ->
             let parts = line.Replace(":", "").Split(" ")
             let key = parts.[0]
-            let values = HashSet<string>(parts.[1..])
+            let values = parts.[1..]
             omap.[key] <- values)
 
         omap
 
-    let count_connections (map: Dictionary<string, HashSet<string>>) (start: string) (target: string) : uint64 =
+    let count_connections (map: Dictionary<string, string[]>) (start: string) (target: string) : uint64 =
         let cache = Dictionary<string, uint64>()
 
         let rec loop (toVisit: string) =
             if toVisit = target then
                 1UL
+            else if cache.ContainsKey toVisit then
+                cache.[toVisit]
             else
-                match map.TryGetValue toVisit with
-                | false, _ -> 0UL
-                | true, nextVisits ->
-                    let rest =
-                        nextVisits
-                        |> Seq.map (fun n ->
-                            match cache.TryGetValue n with
-                            | true, v -> v
-                            | false, _ ->
-                                let res = loop n
-                                cache.[n] <- res
-                                res)
-                        |> Seq.sum
+                let result =
+                    match map.TryGetValue toVisit with
+                    | false, _ -> 0UL
+                    | true, nextVisits -> nextVisits |> Array.sumBy (fun nv -> loop nv)
 
-                    rest
+                cache.[toVisit] <- result
+                result
 
         loop start
 
