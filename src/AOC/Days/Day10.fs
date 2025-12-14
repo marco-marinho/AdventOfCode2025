@@ -3,6 +3,7 @@ namespace AOC.Days
 module Day10 =
     open AOC.Utils
     open CSharpLib
+    open System.Collections.Generic
 
     type Lights =
         { Current: list<bool>
@@ -44,10 +45,15 @@ module Day10 =
         { lights with Current = new_current }
 
     let bfs (lights: Lights) : int =
-        let rec loop (queue: list<(Lights * int)>) (visited: Set<list<bool>>) : int =
-            match queue with
-            | [] -> -1
-            | (current_lights, depth) :: rest ->
+        let queue = Queue<(Lights * int)>()
+        queue.Enqueue(lights, 0)
+
+        let rec loop (visited: Set<list<bool>>) : int =
+            if queue.Count = 0 then
+                -1
+            else
+                let current_lights, depth = queue.Dequeue()
+
                 if current_lights.Current = current_lights.Target then
                     depth
                 else
@@ -57,12 +63,14 @@ module Day10 =
                         |> List.filter (fun l -> not (Set.contains l.Current visited))
                         |> List.map (fun l -> l, depth + 1)
 
+                    next_states |> List.iter (fun s -> queue.Enqueue s)
+
                     let new_visited =
                         next_states |> List.fold (fun acc (l, _) -> Set.add l.Current acc) visited
 
-                    loop (rest @ next_states) new_visited
+                    loop new_visited
 
-        loop [ (lights, 0) ] (Set.empty.Add lights.Current)
+        loop (Set.empty.Add lights.Current)
 
     let make_matrices (buttons: Set<int>[]) (joltages: int[]) =
         let b = joltages |> Array.map double

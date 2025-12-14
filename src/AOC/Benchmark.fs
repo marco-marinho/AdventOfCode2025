@@ -93,3 +93,12 @@ type Day10Benchmarks() =
 
     [<Benchmark>]
     member this.Part2() = Day10.solve 2
+
+[<MemoryDiagnoser>]
+type Day11Benchmarks() =
+
+    [<Benchmark>]
+    member this.Part1() = Day11.solve 1
+
+    [<Benchmark>]
+    member this.Part2() = Day11.solve 2

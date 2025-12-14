@@ -41,6 +41,9 @@ let main args =
         | 10 ->
             let summary = BenchmarkRunner.Run<Day10Benchmarks>()
             ()
+        | 11 ->
+            let summary = BenchmarkRunner.Run<Day11Benchmarks>()
+            ()
         | _ -> printfn "Day %d not implemented yet" day
 
     | [| dayStr; partStr |] ->
@@ -77,6 +80,9 @@ let main args =
             printfn "Day %d, Part %d: %A" day part result
         | 10 ->
             let result = Day10.solve part
+            printfn "Day %d, Part %d: %A" day part result
+        | 11 ->
+            let result = Day11.solve part
             printfn "Day %d, Part %d: %A" day part result
         | _ -> printfn "Day %d not implemented yet" day
 

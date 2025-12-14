@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.7)
+cmake_minimum_required(VERSION 3.10..4.2)
 
 project(fort_lib LANGUAGES Fortran CXX)
 

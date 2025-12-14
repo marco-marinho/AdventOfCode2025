@@ -17,6 +17,7 @@
     <Compile Include="Days/Day08.fs" />
     <Compile Include="Days/Day09.fs" />
     <Compile Include="Days/Day10.fs" />
+    <Compile Include="Days/Day11.fs" />
     <Compile Include="Benchmark.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
@@ -37,5 +38,24 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup> 
+
+    <!-- Build native libraries with CMake before compiling -->
+  <Target Name="BuildNativeLibs" BeforeTargets="BeforeBuild">
+    <PropertyGroup>
+      <NativeLibDir>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\NativeLib'))</NativeLibDir>
+      <NativeBuildDir>$(NativeLibDir)\build</NativeBuildDir>
+    </PropertyGroup>
+
+    <!-- Create build directory if it doesn't exist -->
+    <MakeDir Directories="$(NativeBuildDir)" Condition="!Exists('$(NativeBuildDir)')" />
+    
+    <!-- Run CMake configure -->
+    <Exec Command="cmake -S &quot;$(NativeLibDir)&quot; -B &quot;$(NativeBuildDir)&quot; -G Ninja" 
+          WorkingDirectory="$(NativeBuildDir)" />
+    
+    <!-- Run CMake build -->
+    <Exec Command="cmake --build &quot;$(NativeBuildDir)&quot; --config Release" 
+          WorkingDirectory="$(NativeBuildDir)" />
+  </Target>
 
 </Project>
